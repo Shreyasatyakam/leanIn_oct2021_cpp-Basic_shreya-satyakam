@@ -76,99 +76,123 @@ int main(void) {
 
 
 ques3.
+#include<iostream>
+using namespace std;
+//function to display all the menu in
+//the current program
+void menu()
+{
+    cout<<"\n\t\tMENU :";
+    cout<<"\nPress 1 to traverse the array\n";
+    cout << "Press 2 to search an element in the array\n";
+    cout << "Press 3 to modify the element in the array\n";
+    cout << "Press 4 to exit\n";
+}
 
-#include<iostream.h>
-#include<conio.h>
-void traversal(int A[],int N);
-void insertion(int A[],int &N,int Pos,int ITEM);
-int lsearch(int A[],int N,int item);
-void deletee(int A[],int &N,int Pos,int ITEM );
-void main()
+void traverse(int arr[],int num)
 {
-clrscr();
-int a[10],n,pos,item,choice,delitem;
-char ch;
-cout<<"\n Enter size:";
-cin>>n;
-cout<<"\n Enter Array:";
-for(int i=0;i<n;i++)
-cin>>a[i];
-do
+    
+        for (int i = 0; i < num; i++)    
+        {    
+            cout<<arr[i]<<"\n";    
+        }    
+}
+
+void search(int arr[], int num) 
 {
-clrscr();
-cout<<"\n \t\t Menu Driven Program";
-cout<<"\n 1. Traversal \n 2. Insertion \n 3. Deletion \n 4. Searching";
-cout<<"\n Enter your choice:";
-cin>>choice;
-switch(choice)
-{
-        case 1: traversal(a,n);
-                break;
-        case 2: //Insertion
-                cout<<"\n Enter Position:";
-                cin>>pos;
-                cout<<"\nEnter Element:";
-                cin>>item;
-                insertion(a,n,pos,item);
-                break;
-        case 3: cout<<"\n Enter Element to be deleted:";
-                cin>>delitem;
-                pos=lsearch(a,n,delitem);
-                if(pos==-1)
-                {
-                cout<<"\n Element not found";
-                }
-                deletee(a,n,pos,delitem);
-                break;
-        case 4: cout<<"\n Enter the element to be searched";
-                cin>>item;
-                pos=lsearch(a,n,item);
-                cout<<"\n Element found at index:"<<pos;
-                cout<<"\n Element found at position"<<pos+1;
-                break;
-        default:cout<<"wrong choice";
+    int i, element;
+   cout << "\nEnter Element to Search : ";
+    cin>>element;
+    /* for : Check elements one by one - Linear */
+    for (i = 0; i < num; i++) 
+    {
+        /* If for Check element found or not */
+        if (arr[i] == element) 
+        {
+            cout << "\nLinear Search : Element  : " << element << " : Found :  Position : " << i + 1 << ".\n";
+            break;
         }
-        cout<<"\n Do you want to continue?";
-        cout<<"(Press y/n)";
-        cin>>ch;
-        }while(ch=='y');
-getch();
+    }
+
+    if (i == num)
+        cout << "\nSearch Element : " << element << "  : Not Found \n";
 }
-void traversal(int b[],int N)
+void modify(int arr[],int num)
 {
-for(int i=0;i<N;i++)
-cout<<b[i]<<" ";
-}
-// Insertion of element into a linear array with functions in c++
-void insertion(int A[],int &N,int Pos,int ITEM)
-{
-for(int i=N;i>=Pos;i--)
-A[i+1]=A[i];
-A[Pos]=ITEM;
-N=N+1;
-}
-// Deletion of element from linear array with functions in c++
-void deletee(int A[],int &N,int Pos,int ITEM)
-{
-for(int i=Pos;i<N;i++)
-A[i]=A[i+1];
-N=N-1;
-cout<<ITEM<<" is deleted from the array.";
-}
-int lsearch(int A[],int N,int ITEM)
-{
-int index=-1;
-for(int i=0;i<N;i++)
-{
-if(A[i]==ITEM)
-{
-index=i;
-}
-}
-return index;
+
+int t,a[10],n,m,s,j=0,b[10];
+  
+  cout<<"\nGiven values are:";
+  traverse(arr, num);
+  
+  cout<<"\nEnter the position to be update:";
+  cin>>t;
+  cout<<"\nEnter the value to be update:";
+  cin>>s;
+  for(int i=0;i<num;i++)
+  {
+    if(i==t)
+    {
+       a[i]=s;
+    }
+  }
+  cout<<"\nUpdated value is:";
+  for(int i=0;i<num;i++)
+  {
+    cout<<arr[i]<<"\n";;
+  }
+
 }
 
+ int main()
+{
+    int arr[100], i, num, choice;
+    cout<<"Enter the size of "
+           "an array :\n";
+ 
+    cin >> num;
+    cout<<"Enter the elements of "
+           "the array :\n";
+ 
+    for (i = 0; i < num; i++) 
+    {
+        cin >> arr[i];
+    }
+ 
+    do {
+        cout << "\n";
+        menu();
+        cout << "\nEnter your "
+             << "choice:\n ";
+        cin >> choice;
+         
+ 
+        switch (choice) 
+        {
+        case 1:
+           traverse(arr, num);
+            break;
+        case 2:
+            search(arr, num);
+            break;
+        case 3:
+            modify(arr, num);
+            break;
+        
+        case 4:
+            exit(0);
+            break;
+        default:
+            cout << "INVALID CHOICE ";
+        }
+    }while (choice <4);
+    
+ 
+    return 0;
+}
 
+        
+       
 ques4.
 #include<iostream>
 using namespace std;
